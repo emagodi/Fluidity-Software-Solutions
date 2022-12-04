@@ -24,5 +24,6 @@
 18. Remove wildcard imports on fixture resources file
 19. BootstrapService catch errors
 20. Modify FixturesService to return fixtures to use in the single API
+21. Add BootstrapResourceTest with hard coded pass first
 
 
