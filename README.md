@@ -12,4 +12,5 @@
 6. Remove BootStrapStaticException to avoid duplicate code
 7. Remove CatModel
 8. Remove ChipPlayModel
+9. Remove ElementStatModel
 
