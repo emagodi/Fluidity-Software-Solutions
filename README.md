@@ -19,5 +19,7 @@
 13. Replace getters and setters with lombok
 14. Add utils and replace url in code with url in util
 15. Replace url in code with url in util in fixtures
-16. 
+16. Add resource folder and move all resources to that folder
+17. Catch exceptions on all resources files
+
 
