@@ -9,4 +9,5 @@
 3. Refactor Exceptions file to CustomRunTimeException
 4. Remove FixturesException to avoid duplicate code
 5. Remove EventPointsException to avoid duplicate code
+6  Remove BootStrapStaticException to avoid duplicate code
 
