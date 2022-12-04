@@ -1,6 +1,7 @@
 package solutions.fluidity.test.service;
 
 import org.springframework.stereotype.Component;
+import solutions.fluidity.test.exception.CustomRunTimeException;
 import solutions.fluidity.test.premiershipapi.BootstrapStatic;
 
 import java.io.IOException;
@@ -15,7 +16,13 @@ public class BootstrapService {
     }
 
     public String getBootstrapData() throws IOException {
-        String result = bootstrapStatic.lookup();
-        return result;
+        try {
+            return bootstrapStatic.lookup();
+        }
+        catch (IOException ex) {
+            throw new IOException("BOOT STRAP IO EXCEPTION::");
+        } catch (IllegalArgumentException ex) {
+            throw new CustomRunTimeException("BOOT RUN TIME EXCEPTION::");
+        }
     }
 }

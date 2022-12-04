@@ -21,5 +21,8 @@
 15. Replace url in code with url in util in fixtures
 16. Add resource folder and move all resources to that folder
 17. Catch exceptions on all resources files
+18. Remove wildcard imports on fixture resources file
+19. BootstrapService catch errors
+
 
 
