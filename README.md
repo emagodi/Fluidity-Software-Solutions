@@ -11,4 +11,5 @@
 5. Remove EventPointsException to avoid duplicate code
 6. Remove BootStrapStaticException to avoid duplicate code
 7. Remove CatModel
+8. Remove ChipPlayModel
 
