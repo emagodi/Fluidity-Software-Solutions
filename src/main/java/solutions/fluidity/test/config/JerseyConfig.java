@@ -2,8 +2,8 @@ package solutions.fluidity.test.config;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
-import solutions.fluidity.test.BootstrapResource;
-import solutions.fluidity.test.FixturesResource;
+import solutions.fluidity.test.resource.BootstrapResource;
+import solutions.fluidity.test.resource.FixturesResource;
 
 import javax.ws.rs.ApplicationPath;
 

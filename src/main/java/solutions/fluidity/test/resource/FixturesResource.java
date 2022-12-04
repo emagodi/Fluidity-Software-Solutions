@@ -1,4 +1,4 @@
-package solutions.fluidity.test;
+package solutions.fluidity.test.resource;
 
 import org.springframework.stereotype.Component;
 import solutions.fluidity.test.service.FixturesService;
