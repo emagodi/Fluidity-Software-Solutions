@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import solutions.fluidity.test.premiershipapi.model.boostrapstatic.*;
 import solutions.fluidity.test.premiershipapi.model.fixtures.FixtureModel;
 import solutions.fluidity.test.service.FixturesService;
+import solutions.fluidity.test.utils.UrlUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,29 +30,33 @@ public class BootstrapStatic {
 
     public String lookup() throws IOException {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("https://fantasy.premierleague.com/api/bootstrap-static/")
+        Request request = new Request.Builder().url(UrlUtils.BOOT_STRAP_URL)
                 .header("Accept", "application/json")
                 .header("User-Agent", "Mozilla/5.0").build();
         Response response = client.newCall(request).execute();
-        String responseBody = response.body().string();
+        //Check for Null Pointer
+        if (response != null) {
+            String responseBody = response.body().string();
 
-        if (response.code() < 400) {
-            System.out.println("yeah we got it");
-            Gson gson = new GsonBuilder().create();
-            BootstrapStaticModel bootstrapStaticModel = gson.fromJson(responseBody, BootstrapStaticModel.class);
+            if (response.code() < 400) {
+                Gson gson = new GsonBuilder().create();
+                BootstrapStaticModel bootstrapStaticModel = gson.fromJson(responseBody, BootstrapStaticModel.class);
 
-            String result = fixturesService.getFixtures();
-            List<FixtureModel> fixtures = fixturesService.parseResponse(result);
-            var bootstrapModel = new BootstrapModel();
+                String result = fixturesService.getFixtures();
+                List<FixtureModel> fixtures = fixturesService.parseResponse(result);
+                var bootstrapModel = new BootstrapModel();
 
-            List<EventModel> filteredEvents = bootstrapStaticModel.getEvents().subList(0, 1);
+                List<EventModel> filteredEvents = bootstrapStaticModel.getEvents().subList(0, 1);
 
-            getEvents(bootstrapStaticModel, filteredEvents, fixtures);
-            setEventPlayerTypes(bootstrapStaticModel, filteredEvents.get(0));
-            bootstrapModel.setEvents(filteredEvents);
-            return gson.toJson(bootstrapModel, BootstrapModel.class);
+                getEvents(bootstrapStaticModel, filteredEvents, fixtures);
+                setEventPlayerTypes(bootstrapStaticModel, filteredEvents.get(0));
+                bootstrapModel.setEvents(filteredEvents);
+                return gson.toJson(bootstrapModel, BootstrapModel.class);
+            }
+            return responseBody;
+        }else{
+            return null;
         }
-        return responseBody;
     }
 
     private void setEventPlayerTypes(
