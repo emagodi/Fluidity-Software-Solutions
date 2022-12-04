@@ -25,5 +25,6 @@
 19. BootstrapService catch errors
 20. Modify FixturesService to return fixtures to use in the single API
 21. Add BootstrapResourceTest with hard coded pass first
+22. Remove WARNING: JAXBContext implementation could not be found. WADL feature is disabled
 
 
