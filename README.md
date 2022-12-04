@@ -4,4 +4,4 @@
 
 ## Getting Started
 
-1. Add application.properties files to all changing of port number
+1. Add application.properties files to allow changing of port number
