@@ -20,9 +20,9 @@ public class BootstrapService {
             return bootstrapStatic.lookup();
         }
         catch (IOException ex) {
-            throw new IOException("BOOT STRAP IO EXCEPTION::");
+            throw new IOException("BOOTSTRAP IO EXCEPTION::");
         } catch (IllegalArgumentException ex) {
-            throw new CustomRunTimeException("BOOT RUN TIME EXCEPTION::");
+            throw new CustomRunTimeException("BOOTSTRAP RUN TIME EXCEPTION::");
         }
     }
 }
