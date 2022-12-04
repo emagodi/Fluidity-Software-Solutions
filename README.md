@@ -26,5 +26,12 @@
 20. Modify FixturesService to return fixtures to use in the single API
 21. Add BootstrapResourceTest with hard coded pass first
 22. Remove WARNING: JAXBContext implementation could not be found. WADL feature is disabled
-
+23. The API has been structured to be one API which can be used by frontend developer using filtering. The API levels are as follows:
+    a) Event
+    b) Gameweek has fixtures for that week inside
+    c) Inside fixtures, we have home and way teams
+    d) Inside home and away teams we have players for the team
+    e) Inside players we have goalkeepers, defenders, midfielder etc
+    d) Inside each player type like goalkeepers we have individual information for the player
+    
 
