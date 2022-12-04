@@ -12,6 +12,6 @@ public class TeamModel {
     private String name;
     private String short_name;
     private String unavailable;
-    private List<ElementModel> elements;
+    private PlayersModel players;
 
 }
