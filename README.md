@@ -18,5 +18,6 @@
 12. Remove TopElementInfo
 13. Replace getters and setters with lombok
 14. Add utils and replace url in code with url in util
-15. 
+15. Replace url in code with url in util in fixtures
+16. 
 
