@@ -16,4 +16,5 @@
 10. Remove GameSettingsModel
 11. Remove PhaseModel
 12. Remove TopElementInfo
+13. Replace getters and setters with lombok
 
