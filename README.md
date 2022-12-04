@@ -15,5 +15,5 @@
 9. Remove ElementStatModel
 10. Remove GameSettingsModel
 11. Remove PhaseModel
-12. 
+12. Remove TopElementInfo
 
