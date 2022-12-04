@@ -16,12 +16,10 @@ public class FixturesService {
     }
 
     public String getFixtures() throws IOException {
-        String result = fixtures.fixturesLookup();
-        return result;
+        return fixtures.fixturesLookup();
     }
 
     public List<FixtureModel> parseResponse(String responseBody)  {
-        List<FixtureModel> fixtures  = this.fixtures.parseResponse(responseBody);
-        return fixtures;
+        return this.fixtures.parseResponse(responseBody);
     }
 }
