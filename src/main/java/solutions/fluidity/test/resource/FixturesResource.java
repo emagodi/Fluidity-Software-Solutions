@@ -1,13 +1,16 @@
 package solutions.fluidity.test.resource;
-
 import org.springframework.stereotype.Component;
 import solutions.fluidity.test.exception.CustomRunTimeException;
 import solutions.fluidity.test.service.FixturesService;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+
 
 @Component
 @Path("fixtures")
