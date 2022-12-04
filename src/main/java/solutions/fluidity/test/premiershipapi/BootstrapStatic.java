@@ -34,7 +34,7 @@ public class BootstrapStatic {
                 .header("Accept", "application/json")
                 .header("User-Agent", "Mozilla/5.0").build();
         Response response = client.newCall(request).execute();
-        //Check for Null Pointer
+
         if (response != null) {
             String responseBody = response.body().string();
 
@@ -69,7 +69,6 @@ public class BootstrapStatic {
         filteredEvents.setMidfielders(bootstrapStaticModel.getElements().stream().filter(el -> el.getElement_type() == MIDFIELDER).collect(Collectors.toList()));
         filteredEvents.setDefenders(bootstrapStaticModel.getElements().stream().filter(el -> el.getElement_type() == FORWARD).collect(Collectors.toList()));
     }
-
 
     private void getEvents(BootstrapStaticModel bootstrapStaticModel,
                            List<EventModel> filteredEvents,
@@ -110,13 +109,25 @@ public class BootstrapStatic {
             BootstrapStaticModel bootstrapStaticModel,
             TeamsModel teams
     ) {
-        List<ElementModel> homeTeamPlayers =
-                bootstrapStaticModel.getElements().stream().filter(elm -> elm.getTeam() == teams.getHomeTeam().getId()).collect(Collectors.toList());
-        List<ElementModel> awayTeamPlayers =
-                bootstrapStaticModel.getElements().stream().filter(elm -> elm.getTeam() == teams.getAwayTeam().getId()).collect(Collectors.toList());
+        PlayersModel homeTeamPlayers = new PlayersModel();
+        PlayersModel awayTeamPlayers = new PlayersModel();
+        List<ElementModel> homePlayersList = bootstrapStaticModel.getElements().stream().filter(elm -> elm.getTeam() == teams.getHomeTeam().getId()).collect(Collectors.toList());
+        List<ElementModel> awayPlayersList = bootstrapStaticModel.getElements().stream().filter(elm -> elm.getTeam() == teams.getAwayTeam().getId()).collect(Collectors.toList());
+        if(homePlayersList!=null && homePlayersList.size()>0){
+            homeTeamPlayers.setGoalKeepers(homePlayersList.stream().filter(el -> el.getElement_type() == GOAL_KEEPER).collect(Collectors.toList()));
+            homeTeamPlayers.setDefenders(homePlayersList.stream().filter(el -> el.getElement_type() == DEFENDER).collect(Collectors.toList()));
+            homeTeamPlayers.setMidfielders(homePlayersList.stream().filter(el -> el.getElement_type() == MIDFIELDER).collect(Collectors.toList()));
+            homeTeamPlayers.setForwards(homePlayersList.stream().filter(el -> el.getElement_type() == FORWARD).collect(Collectors.toList()));
+        }
+        if(awayPlayersList!=null && awayPlayersList.size()>0){
+            awayTeamPlayers.setGoalKeepers(awayPlayersList.stream().filter(el -> el.getElement_type() == GOAL_KEEPER).collect(Collectors.toList()));
+            awayTeamPlayers.setDefenders(awayPlayersList.stream().filter(el -> el.getElement_type() == DEFENDER).collect(Collectors.toList()));
+            awayTeamPlayers.setMidfielders(awayPlayersList.stream().filter(el -> el.getElement_type() == MIDFIELDER).collect(Collectors.toList()));
+            awayTeamPlayers.setForwards(awayPlayersList.stream().filter(el -> el.getElement_type() == FORWARD).collect(Collectors.toList()));
+        }
 
-        teams.getHomeTeam().setElements(homeTeamPlayers);
-        teams.getAwayTeam().setElements(awayTeamPlayers);
+        teams.getHomeTeam().setPlayers(homeTeamPlayers);
+        teams.getAwayTeam().setPlayers(awayTeamPlayers);
 
         return teams;
     }
